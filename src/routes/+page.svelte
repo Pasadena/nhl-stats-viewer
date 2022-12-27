@@ -8,7 +8,7 @@
 </svelte:head>
 
 <section />
-<h1>Teams</h1>
+<h1 class="w-full text-2xl">Teams</h1>
 {#each data.teams as team}
 	<div>{team.name}</div>
 {/each}
@@ -20,9 +20,5 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
 	}
 </style>
