@@ -1,12 +1,12 @@
-// since there's no dynamic data here, we can prerender
+import type { PageLoad } from '.svelte-kit/types/src/routes/$types';
+import type { Team } from 'src/models/Team';
 
-// it so that it gets served as a static asset in production
-//export const prerender = true;
+type OutputType = { teams: Team[] };
 
-export async function load() {
-	const data = await (await fetch('https://statsapi.web.nhl.com/api/v1/teams')).json();
-	console.log('DATA', data);
-	return {
-		teams: data.teams
-	};
-}
+export const load: PageLoad<OutputType> = async () => {
+	const response = await fetch('https://statsapi.web.nhl.com/api/v1/teams');
+	const data = await response.json();
+	return Promise.resolve({
+		teams: data.teams as Team[]
+	});
+};

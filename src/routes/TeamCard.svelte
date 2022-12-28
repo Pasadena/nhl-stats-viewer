@@ -1,5 +1,7 @@
 <script lang="ts">
-	export let team;
+	import type { Team } from 'src/models/Team';
+
+	export let team: Team;
 </script>
 
 <div
