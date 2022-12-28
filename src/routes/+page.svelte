@@ -1,4 +1,6 @@
 <script>
+	import TeamList from './TeamList.svelte';
+
 	export let data;
 </script>
 
@@ -7,11 +9,10 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section />
-<h1 class="w-full text-2xl">Teams</h1>
-{#each data.teams as team}
-	<div>{team.name}</div>
-{/each}
+<section>
+	<h1 class="w-full text-2xl mb-4">Teams</h1>
+	<TeamList teams={data.teams} />
+</section>
 
 <style>
 	section {
