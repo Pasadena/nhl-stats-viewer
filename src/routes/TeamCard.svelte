@@ -5,7 +5,9 @@
 </script>
 
 <div
-	class="flex flex-col justify-center align-center p-6 bg-white rounded-lg shadow-md h-28 hover:scale-110 hover:cursor-pointer transition"
+	class="flex flex-col justify-center items-center bg-white rounded-lg shadow-md h-28 hover:scale-110 hover:cursor-pointer transition"
 >
-	{team.name}
+	<a href={`team/${team.id}`} class="p-6 ">
+		{team.name}
+	</a>
 </div>
