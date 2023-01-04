@@ -2,6 +2,8 @@
 	import BreadCrumbs from '$lib/components/BreadCrumbs.svelte';
 	import Card from '$lib/components/Card.svelte';
 	import type { PageData } from './$types';
+	import { Tabs, TabItem } from 'flowbite-svelte';
+	import Roster from './Roster.svelte';
 
 	export let data: PageData;
 </script>
@@ -33,6 +35,17 @@
 					<span>{data.team.venue.name}, {data.team.venue.city}</span>
 				</div>
 			</div>
+			<Tabs>
+				<TabItem open title="Profile">
+					<Roster team={data.team} />
+				</TabItem>
+				<TabItem ttile="Settings">
+					<p class="text-sm text-gray-500 dark:text-gray-400">
+						<b>Settings:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				</TabItem>
+			</Tabs>
 		</div>
 	</Card>
 </section>
