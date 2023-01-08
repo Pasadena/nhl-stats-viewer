@@ -29,8 +29,10 @@
 		{@const roster = value.teams[0].roster}
 		<!-- promise was fulfilled -->
 		<List items={sortByName(roster.roster.filter(isForward))} let:item title="Forwards">
-			<span class="mr-4">{item.person.fullName},</span>
-			<span>{item.position.abbreviation}</span>
+			<a href={`/player/${item.person.id}`} class="hover:no-underline">
+				<span class="mr-4">{item.person.fullName},</span>
+				<span>{item.position.abbreviation}</span>
+			</a>
 		</List>
 		<List
 			items={sortByName(roster.roster.filter(isDefenceman))}
@@ -38,12 +40,17 @@
 			title="Defensemen"
 			class="my-8"
 		>
-			<span class="mr-4">{item.person.fullName},</span>
-			<span>{item.position.abbreviation}</span>
+			<a href={`/player/${item.person.id}`}>
+				<span class="mr-4">{item.person.fullName},</span>
+				<span>{item.position.abbreviation}</span>
+			</a>
 		</List>
+
 		<List items={sortByName(roster.roster.filter(isGoalie))} let:item title="Goalies">
-			<span class="mr-4">{item.person.fullName},</span>
-			<span>{item.position.abbreviation}</span>
+			<a href={`/player/${item.person.id}`}>
+				<span class="mr-4">{item.person.fullName},</span>
+				<span>{item.position.abbreviation}</span>
+			</a>
 		</List>
 	{:catch error}
 		<!-- promise was rejected -->

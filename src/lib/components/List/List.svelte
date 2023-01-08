@@ -7,7 +7,9 @@
 	<p class="font-bold text-lg my-2">{title}</p>
 	<ol class="">
 		{#each items as item, index}
-			<div class="p-2 odd:bg-indigo-100 rounded-md"><slot {item} {index} /></div>
+			<li class="p-2 odd:bg-indigo-100 rounded-md hover:bg-indigo-300 hover:cursor-pointer">
+				<slot {item} {index} />
+			</li>
 		{/each}
 	</ol>
 </div>

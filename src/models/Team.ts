@@ -29,10 +29,25 @@ export type Roster = {
 	roster: RosterMember[];
 };
 
-export type RosterMember = {
-	person: {
-		fullName: string;
+export type Player = {
+	fullName: string;
+	link: string;
+	id: string;
+	primaryNumber: number;
+	nationality: string;
+	birthDate: string;
+	birthCity: string;
+	currentAge: number;
+	height: string;
+	weight: number;
+	currentTeam: {
+		id: string;
+		name: string;
 	};
+};
+
+export type RosterMember = {
+	person: Player;
 	position: {
 		code: string;
 		type: PositionType;
