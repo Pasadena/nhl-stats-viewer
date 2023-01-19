@@ -1,10 +1,17 @@
 import type { Player } from '$models/Team';
 import type { PageServerData, RequestEvent } from './$types';
 
-type OutputType = Player;
+type OutputType = { player: Player; stats: unknown };
 
 export async function load({ params }: RequestEvent): PageServerData<OutputType> {
-	const response = await fetch(`https://statsapi.web.nhl.com/api/v1/people/${params.id}`);
-	const data = await response.json();
-	return data.people[0];
+	const [player, stats] = await Promise.all([
+		fetch(`https://statsapi.web.nhl.com/api/v1/people/${params.id}`).then((res) => res.json()),
+		fetch(
+			`https://statsapi.web.nhl.com/api/v1/people/${params.id}/stats?stats=statsSingleSeason`
+		).then((res) => res.json())
+	]);
+	return {
+		player: player.people[0],
+		stats
+	};
 }
